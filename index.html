@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manuvikas Portfolio</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #1f1c2c, #0f0c29);
+            color: white;
+            scroll-behavior: smooth;
+        }
+        canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+        .content {
+            max-width: 90%;
+            margin: 50px auto;
+            padding: 20px;
+            position: relative;
+            z-index: 1;
+        }
+        h1, h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            position: relative;
+            animation: fadeIn 1.5s ease-in-out;
+        }
+        h1 {
+            font-size: 2.5rem;
+            text-transform: uppercase;
+            background: linear-gradient(90deg, #ff8c00, #ffa500, #ffb700);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        h2 {
+            color: #ffa500;
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        p, ul {
+            font-size: 1rem;
+            line-height: 1.6;
+            margin: 20px 0;
+            color: #f1f1f1;
+        }
+        .card {
+            background: rgba(0, 0, 0, 0.7);
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 10px;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.4);
+            transition: transform 0.3s ease-in-out, background 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-10px);
+            background: rgba(255, 140, 0, 0.8);
+        }
+        ul {
+            padding-left: 20px;
+        }
+        ul li {
+            margin: 10px 0;
+        }
+        section {
+            margin-bottom: 50px;
+        }
+        @media only screen and (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+            h2 {
+                font-size: 1.5rem;
+            }
+            p, ul {
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="content">
+        <section>
+            <h1>Manuvikas Portfolio</h1>
+            <p>As a motivated and dedicated fresher software engineer, I am eager to leverage my technical skills and knowledge in a dynamic and growth-oriented environment. I aspire to contribute to innovative projects, continually enhance my proficiency in software development, and collaborate with a talented team to drive technological advancements. My goal is to become a versatile and impactful software engineer, delivering robust and scalable solutions.</p>
+        </section>
+
+        <section>
+            <h2>Projects</h2>
+            <div class="card">
+                <h3>1. Vulnerability Scanner</h3>
+                <p>Building a vulnerability scanner in Python entails creating a tool that automates the detection of security vulnerabilities within network environments.</p>
+            </div>
+            <div class="card">
+                <h3>2. Portfolio Website</h3>
+                <p>Developed a responsive and minimalist portfolio website using HTML, CSS, and JavaScript, featuring a brief introduction about myself and direct links to my social media profiles. The site focuses on simplicity, clean design, and seamless user experience, showcasing my web development skills and attention to detail.</p>
+            </div>
+            <div class="card">
+                <h3>3. Volume Control Using Hand Gestures</h3>
+                <p>This project introduces a gesture-based volume controller that enhances software interaction by allowing users to control volume with hand gestures, such as raising or lowering fingers. Unlike traditional input devices, this system uses low-cost cameras and doesn't require specialized equipment, making it affordable and accessible. By tracking the positions of the index and thumb fingers, the system offers precise and intuitive control, improving user experience. Its simplicity and cost-effectiveness suggest potential for broader applications and future advancements in user interface design.</p>
+            </div>
+        </section>
+
+        <section>
+            <h2>Skills</h2>
+            <p>Web Development, OOPs with Java, Cybersecurity, SQL & NoSQL</p>
+            <p>Programming Languages: Java, C, Python, Solidity, HTML, CSS, JavaScript, Next.js</p>
+        </section>
+
+        <section>
+            <h2>Languages Known</h2>
+            <p>English, Hindi, Telugu</p>
+        </section>
+
+        <section>
+            <h2>Strengths</h2>
+            <ul>
+                <li>Strong understanding of HTML, CSS, and responsive web design</li>
+                <li>Problem-solving and analytical thinking</li>
+                <li>Effective communication and collaboration in team environments</li>
+                <li>Consistency in learning and following through with tasks</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Hobbies</h2>
+            <ul>
+                <li>Video editing or content creation</li>
+                <li>Photography or digital art</li>
+                <li>Blogging about technology or personal experiences</li>
+            </ul>
+        </section>
+    </div>
+
+    <!-- Three.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script>
+        // Scene setup
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer({ antialias: true });
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        document.body.appendChild(renderer.domElement);
+
+        // Create galaxy effect
+        const starsGeometry = new THREE.BufferGeometry();
+        const starsMaterial = new THREE.PointsMaterial({ color: 0xffffff });
+
+        const starVertices = [];
+        for (let i = 0; i < 10000; i++) {
+            const x = (Math.random() - 0.5) * 2000;
+            const y = (Math.random() - 0.5) * 2000;
+            const z = (Math.random() - 0.5) * 2000;
+            starVertices.push(x, y, z);
+        }
+
+        starsGeometry.setAttribute('position', new THREE.Float32BufferAttribute(starVertices, 3));
+        const stars = new THREE.Points(starsGeometry, starsMaterial);
+        scene.add(stars);
+
+        camera.position.z = 500;
+
+        // Animation loop
+        function animate() {
+            requestAnimationFrame(animate);
+            stars.rotation.x += 0.0005;
+            stars.rotation.y += 0.0005;
+            renderer.render(scene, camera);
+        }
+        animate();
+
+        // Handle window resize
+        window.addEventListener('resize', () => {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        });
+
+        // Allow scrolling
+        document.body.style.overflow = "auto";
+    </script>
+</body>
+</html>
